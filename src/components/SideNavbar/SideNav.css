@@ -1,0 +1,480 @@
+/* ===========================
+   SIDEBAR CONTAINER
+   =========================== */
+#side-navbar {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 280px; 
+    height: 100vh; 
+    overflow-y: auto; 
+    overflow-x: hidden;
+    z-index: 1000; 
+
+    background: linear-gradient(180deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.5);
+    padding-top: 20px;
+    color: #e2e8f0;
+}
+
+/* Custom Scrollbar */
+#side-navbar::-webkit-scrollbar {
+    width: 6px;
+}
+
+#side-navbar::-webkit-scrollbar-track {
+    background: rgba(15, 23, 42, 0.5);
+}
+
+#side-navbar::-webkit-scrollbar-thumb {
+    background: rgba(59, 130, 246, 0.3);
+    border-radius: 3px;
+}
+
+#side-navbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(59, 130, 246, 0.5);
+}
+
+/* ===========================
+   LOGO SECTION
+   =========================== */
+#sidebar-logo {
+    width: auto;
+    text-align: left;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-left: 25px;
+    padding-bottom: 20px;
+    
+    background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 50%, #8b5cf6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: fadeInLogo 0.6s ease-out;
+    
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    line-height: 1.3;
+    position: relative;
+}
+
+#sidebar-logo::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+    transition: width 0.4s ease;
+    border-radius: 2px;
+}
+
+#sidebar-logo:hover::after {
+    width: 85%;
+}
+
+#sidebar-logo img {
+    height: 50px;
+    width: 50px;
+    flex-shrink: 0;
+    filter: drop-shadow(0 4px 8px rgba(59, 130, 246, 0.4));
+    transition: all 0.4s ease;
+}
+
+#sidebar-logo:hover {
+    transform: translateX(5px);
+}
+
+#sidebar-logo:hover img {
+    transform: rotate(5deg) ;
+    filter: drop-shadow(0 6px 12px rgba(59, 130, 246, 0.6));
+}
+
+#sidebar-logo:active {
+    transform: translateX(3px) scale(0.98);
+}
+
+@keyframes fadeInLogo {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===========================
+   NAVIGATION MENU
+   =========================== */
+#side-navbar ul {
+    list-style: none; 
+    padding: 0;
+    margin: 0;
+    position: relative;
+}
+
+/* Decorative divider at top of menu */
+#side-navbar ul::before {
+    content: '';
+    display: block;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.3), transparent);
+    margin: 0 20px 15px 20px;
+}
+
+#side-navbar li {
+    margin-bottom: 4px;
+    text-align: left;
+    position: relative;
+}
+
+/* Horizontal dividers between items */
+#side-navbar li::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 20px;
+    right: 20px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(148, 163, 184, 0.1), transparent);
+}
+
+#side-navbar li:last-child::after {
+    display: none;
+}
+
+#side-navbar a {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 16px 25px;
+    text-decoration: none;
+    color: #cbd5e1; 
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-left: 4px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Icon styles - using pseudo-element for icons */
+#side-navbar a::before {
+    content: '';
+    width: 24px;
+    height: 24px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    filter: brightness(0) saturate(100%) invert(84%) sepia(6%) saturate(558%) hue-rotate(182deg) brightness(96%) contrast(90%);
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+/* Icon URLs for each navigation item */
+#side-navbar a[href*="clients"]::before {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>');
+}
+
+#side-navbar a[href*="companies"]::before {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>');
+}
+
+#side-navbar a[href*="vendors"]::before {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>');
+}
+
+#side-navbar a[href*="consultants"]::before {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>');
+}
+
+#side-navbar a[href*="projects"]::before {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>');
+}
+
+#side-navbar a[href*="templates"]::before {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>');
+}
+
+#side-navbar a[href*="invoices"]::before {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><line x1="10" y1="9" x2="8" y2="9"></line></svg>');
+}
+
+/* Animated background gradient on hover */
+#side-navbar a::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.15), transparent);
+    transition: left 0.5s ease;
+    z-index: -1;
+}
+
+#side-navbar a:hover {
+    color: #e0e7ff;
+    border-left-color: #60a5fa;
+    padding-left: 30px;
+    background-color: rgba(59, 130, 246, 0.08);
+}
+
+#side-navbar a:hover::after {
+    left: 100%;
+}
+
+#side-navbar a:hover::before {
+    filter: brightness(0) saturate(100%) invert(66%) sepia(65%) saturate(3121%) hue-rotate(200deg) brightness(103%) contrast(97%);
+    transform: translateX(5px) scale(1.1);
+}
+
+#side-navbar a.active {
+    background: linear-gradient(90deg, rgba(59, 130, 246, 0.2), rgba(59, 130, 246, 0.05));
+    color: #ffffff;
+    border-left-color: #3b82f6;
+    font-weight: 600;
+    box-shadow: inset 0 0 20px rgba(59, 130, 246, 0.1);
+}
+
+#side-navbar a.active::before {
+    filter: brightness(0) saturate(100%) invert(66%) sepia(65%) saturate(3121%) hue-rotate(200deg) brightness(103%) contrast(97%);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.15);
+    }
+}
+
+/* ===========================
+   MAIN CONTENT AREA
+   =========================== */
+#main-content {
+    margin-left: 280px; 
+    padding: 0; 
+    
+    height: 100vh; 
+    overflow: hidden;
+    display: flex; 
+    flex-direction: column; 
+    background: black;
+    position: relative; 
+}
+
+/* ===========================
+   HEADER SECTION
+   =========================== */
+#main-content-header {
+    max-width: 100%;
+    padding: 16px 24px; 
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    background: linear-gradient(90deg, #0f172a 0%, #1e293b 100%);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+#user-info-header {
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+    color: #e2e8f0;
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 8px 16px;
+    background: rgba(59, 130, 246, 0.1);
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    cursor: default;
+    user-select: none;
+}
+
+#user-info-header:hover {
+    background: rgba(59, 130, 246, 0.15);
+}
+
+.user-logo {
+    width: 28px; 
+    height: 28px;
+    object-fit: cover;
+    margin-right: 15px; 
+    border: 2px solid #60a5fa;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+#user-info-header:hover .user-logo {
+    border-color: #60a5fa;
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.4);
+}
+
+.user-name {
+    font-weight: 700;
+    text-shadow: none;
+    transition: none;
+}
+
+/* ===========================
+   SIGN OUT BUTTON
+   =========================== */
+#signout-button-logo {
+    height: 42px;
+    width: 42px; 
+    border-radius: 50%; 
+    border: none;
+    padding: 0;
+    margin-right: 15px;
+    cursor: pointer;
+    background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 50%, #8b5cf6 100%);
+    
+    box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3); 
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+#signout-button-logo img {
+    width: 20px;
+    height: 20px;
+    padding: 12px;
+}
+
+#signout-button-logo::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.4s ease, height 0.4s ease;
+}
+
+#signout-button-logo:hover::before {
+    width: 200px;
+    height: 200px;
+}
+
+#signout-button-logo:hover {
+    width: 130px; 
+    border-radius: 30px; 
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(220, 38, 38, 0.5);
+}
+
+#signout-button-logo:active {
+    transform: translateY(0) scale(0.98);
+}
+
+.signout-icon {
+    width: 40px; 
+    height: 40px;
+    object-fit: contain; 
+    margin: 0 10.5px; 
+    transition: all 0.4s ease;
+    border-radius: 50%; 
+    position: relative;
+    z-index: 1;
+}
+
+#signout-button-logo:hover .signout-icon {
+    margin-right: 8px; 
+    margin-left: 10px;
+    /* transform: rotate(180deg); */
+}
+
+.signout-text {
+    opacity: 0;
+    white-space: nowrap;
+    font-size: 0.9rem;
+    font-weight: 450;
+    color: #ffffff;
+    transition: opacity 0.4s ease 0.1s;
+    position: relative;
+    z-index: 1;
+    letter-spacing: 0.5px;
+}
+
+#signout-button-logo:hover .signout-text {
+    opacity: 1; 
+}
+
+/* ===========================
+   CONTENT CONTAINER
+   =========================== */
+#content-container {
+    padding: 30px;
+    flex-grow: 1; 
+    overflow-y: auto; 
+}
+
+#dashboard-layout {
+    margin: auto;
+    width: 100%;
+}
+
+/* ===========================
+   LANDING PAGE
+   =========================== */
+#landing-page-content {
+    position: relative;
+    width: 100%;
+    height: 90%;
+    border-radius: 30px;
+    margin: auto;
+    z-index: 1;
+}
+
+#landing-page-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+
+    background-image: var(--landing-bg-image); 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;
+    
+    opacity: 0.1; 
+    background-color: black; 
+}
+
+#welcome-message {
+    position: absolute;
+    width: 500px;
+    top: 18%;
+    left: 0;
+    color: white;
+    padding: 20px 40px;
+    border-radius: 10px;
+    font-size: 4rem;
+    text-align: left;
+    text-transform: uppercase;
+    font-family: bebas neue;
+    font-weight: 500;
+    line-height: 1.2;
+    text-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+}

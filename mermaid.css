@@ -1,0 +1,219 @@
+/* Mermaid SVG Container */
+.mermaid svg {
+    width: 100%;
+    height: auto;
+    min-width: 100%;
+    filter: drop-shadow(0 10px 30px rgba(59, 130, 246, 0.25));
+    border-radius: 12px;
+}
+
+/* Main node styling */
+.mermaid .node rect,
+.mermaid .node circle,
+.mermaid .node ellipse,
+.mermaid .node polygon {
+    stroke-width: 3px !important;
+    filter: drop-shadow(0 4px 12px rgba(30, 64, 175, 0.3)) !important;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
+/* Node hover effect */
+.mermaid .node rect:hover,
+.mermaid .node circle:hover,
+.mermaid .node ellipse:hover,
+.mermaid .node polygon:hover {
+    filter: drop-shadow(0 8px 24px rgba(59, 130, 246, 0.5)) brightness(1.1) !important;
+    stroke-width: 4px !important;
+}
+
+/* Text inside nodes */
+.mermaid .nodeLabel {
+    font-weight: 600 !important;
+    font-size: 14px !important;
+    text-anchor: middle !important;
+}
+
+.mermaid text {
+    font-family: 'Segoe UI', 'Trebuchet MS', Arial, sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+    fill: #ffffff !important;
+}
+
+/* Edge/Link lines */
+.mermaid .edgePath path {
+    stroke: #0284c7 !important;
+    stroke-width: 2.5px !important;
+    fill: none !important;
+    filter: drop-shadow(0 2px 6px rgba(2, 132, 199, 0.3)) !important;
+    transition: all 0.3s ease !important;
+}
+
+.mermaid .edgePath path:hover {
+    stroke: #06b6d4 !important;
+    stroke-width: 3px !important;
+    filter: drop-shadow(0 4px 12px rgba(6, 182, 212, 0.5)) !important;
+}
+
+/* Arrow heads */
+.mermaid .edgePath .arrowheadPath {
+    fill: #0284c7 !important;
+    stroke: #0284c7 !important;
+    stroke-width: 1.5px !important;
+    filter: drop-shadow(0 1px 3px rgba(2, 132, 199, 0.4)) !important;
+}
+
+/* Edge labels (ProjectId labels) */
+.mermaid .edgeLabel {
+    background-color: #ffffff !important;
+    border: 2px solid #0284c7 !important;
+    /* border-radius: 6px !important; */
+    padding: 4px 8px !important;
+    filter: drop-shadow(0 2px 6px rgba(2, 132, 199, 0.2)) !important;
+}
+
+.mermaid .edgeLabel text {
+    fill: #0284c7 !important;
+    font-weight: 700 !important;
+    font-size: 12px !important;
+}
+
+/* Node group styling */
+.mermaid .node-group {
+    filter: drop-shadow(0 4px 12px rgba(30, 64, 175, 0.2)) !important;
+}
+
+/* Mermaid background */
+.mermaid {
+    background: transparent !important;
+}
+
+/* Primary nodes (usually the first/main node) */
+.mermaid text[class*="primary"] {
+    fill: #ffffff !important;
+}
+
+/* Connection curve smoothing */
+.mermaid path {
+    animation: slideIn 0.6s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        stroke-dasharray: 100;
+        stroke-dashoffset: 100;
+    }
+    to {
+        opacity: 1;
+        stroke-dasharray: 0;
+        stroke-dashoffset: 0;
+    }
+}
+
+/* Cluster/subgraph styling (if used) */
+.mermaid .cluster {
+    stroke: #0284c7 !important;
+    stroke-width: 2px !important;
+    fill: rgba(59, 130, 246, 0.05) !important;
+    border-radius: 8px !important;
+}
+
+.mermaid .cluster-label {
+    background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%) !important;
+    color: #ffffff !important;
+    padding: 6px 12px !important;
+    border-radius: 4px !important;
+    font-weight: 600 !important;
+}
+
+/* Mermaid container enhancement */
+.mermaid-container {
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    border: 2px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 10px 40px rgba(59, 130, 246, 0.1), 
+                0 0 100px rgba(59, 130, 246, 0.05);
+    overflow: auto;
+    height: 60vh;
+    width: 96%;
+    position: relative;
+}
+
+/* Smooth scrolling in mermaid container */
+.mermaid-container::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+.mermaid-container::-webkit-scrollbar-track {
+    background: rgba(59, 130, 246, 0.05);
+    border-radius: 10px;
+}
+
+.mermaid-container::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 50%, #1d4ed8 100%);
+    border-radius: 10px;
+    border: 2px solid rgba(59, 130, 246, 0.1);
+    transition: all 0.3s ease;
+}
+
+.mermaid-container::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    border: 2px solid rgba(59, 130, 246, 0.2);
+}
+
+/* Firefox scrollbar */
+.mermaid-container {
+    scrollbar-color: #3b82f6 rgba(59, 130, 246, 0.05);
+    scrollbar-width: thin;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .mermaid-container {
+        height: 50vh;
+    }
+
+    .mermaid text {
+        font-size: 12px !important;
+    }
+
+    .mermaid .edgeLabel text {
+        font-size: 11px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .mermaid-container {
+        height: 40vh;
+        width: 100%;
+        padding: 15px;
+    }
+
+    .mermaid svg {
+        min-width: 100% !important;
+    }
+
+    .mermaid text {
+        font-size: 11px !important;
+    }
+
+    .mermaid .edgeLabel text {
+        font-size: 10px !important;
+    }
+
+    .mermaid .node rect,
+    .mermaid .node circle,
+    .mermaid .node ellipse,
+    .mermaid .node polygon {
+        stroke-width: 2px !important;
+    }
+
+    .mermaid .edgePath path {
+        stroke-width: 2px !important;
+    }
+}
+
+

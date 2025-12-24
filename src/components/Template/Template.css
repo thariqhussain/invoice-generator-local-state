@@ -1,0 +1,993 @@
+/* ===========================
+   MAIN TEMPLATES PAGE LAYOUT
+   =========================== */
+
+.templates-page {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    margin: 10px;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+    border-radius: 7px;
+    min-height: calc(100vh - 80px);
+}
+
+.templates-header {
+    position: sticky; 
+    top: 3%; 
+    z-index: 50; 
+    margin: 2px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 10px;
+}
+
+.templates-header h1 {
+    font-size: 3rem;
+    font-family: bebas neue;
+    background: rgb(30,144,255);
+    background: linear-gradient(159deg, rgba(30,144,255,1) 0%, rgba(153,186,221,1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+    margin: 15px;
+}
+
+.view-controls {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.view-btn:hover {
+    background-color: #e2e8f0;
+    transform: translateY(-1px);
+}
+
+.view-btn.active {
+    background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 50%, #1d4ed8 100%);
+    color: white;
+    border-color: #3b82f6;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+/* ===========================
+   TEMPLATES LIST VIEW
+   =========================== */
+
+.templates-list {
+    overflow-y: auto;
+    padding-top: 20px; 
+    padding: 15px;
+    margin: 15px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px 20px;
+    padding-bottom: 40px;
+    align-content: start;
+}
+
+.no-templates-message {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: #64748b;
+    font-size: 1.1rem;
+    padding: 30px;
+    border: 2px dashed #cbd5e1;
+    border-radius: 15px;
+    margin-top: 20px;
+    background-color: rgba(59, 130, 246, 0.05);
+}
+
+/* ===========================
+   TEMPLATE CARD STYLES
+   =========================== */
+
+.template-card {
+    position: relative;
+    background-color: #00356B;
+    border: 4px solid #2c3968;
+    height: 390px;
+    border-radius: 9px;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.1);
+    padding: 22px;
+    padding-bottom: 10px;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+}
+
+.template-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(59, 130, 246, 0.15);
+}
+
+.add-template {
+    padding: 12px 25px;
+    background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 50%, #1d4ed8 100%);
+    color: white;
+    border: none;
+    margin: 30px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+.add-template:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+}
+.add-template:active {
+    transform: translateY(0);
+}
+
+.tree-view-btn {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 28px;
+    height: 28px;
+    border-radius: 5px;
+    background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 50%, #1d4ed8 100%);
+    border: none;
+    font-size: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tree-view-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.5);
+}
+
+.tree-view-btn:active {
+    transform: scale(0.95);
+}
+
+.template-name-header {
+    font-size: 1.7rem;
+    font-family: bebas neue;
+    text-align: left;
+    background: rgb(176,224,230);
+    background: linear-gradient(159deg, rgba(176,224,230,1) 0%, rgba(70,130,180,1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-weight: 700;
+    padding-bottom: 10px;
+}
+
+.template-detail-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+}
+
+.template-detail-row .label {
+    font-weight: 700;
+    font-size: 1rem;
+    color: grey;
+    flex-basis: 45%;
+    text-align: left;
+}
+
+.template-detail-row .value {
+    flex-basis: 55%;
+    text-align: left;
+    word-break: break-all;
+    color: white;
+}
+
+.template-detail-row.full-row {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    padding: 0;
+    border: none;
+}
+
+.template-detail-row.full-row .label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 700;
+    font-size: 1rem;
+    color: grey;
+    text-align: left;
+}
+
+.template-detail-row.full-row .value {
+    text-align: left;
+    margin-top: 5px;
+    line-height: 1.4;
+    color: white;
+}
+
+.template-detail-row.hierarchy-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+}
+
+.template-detail-row.hierarchy-row:hover {
+    background-color: rgba(59, 130, 246, 0.1);
+}
+
+.template-detail-row.hierarchy-row .label {
+    font-weight: 700;
+    font-size: 1rem;
+    color: #64748b;
+    flex-basis: 45%;
+}
+
+.template-detail-row.hierarchy-row .value {
+    color: white;
+    flex-basis: 55%;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.hierarchy-checkbox {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #3b82f6;
+    border-radius: 4px;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.hierarchy-checkbox.checked {
+    background-color: #3b82f6;
+    border-color: #1d4ed8;
+}
+
+.hierarchy-checkbox .checkmark-icon {
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.projects-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 110px;
+    overflow-y: auto;
+    margin: 0;
+    padding-right: 4px;
+}
+
+.projects-list::-webkit-scrollbar {
+    width: 3px;
+}
+
+.projects-list::-webkit-scrollbar-thumb {
+    background: #0284c7;
+    border-radius: 3px;
+}
+
+.projects-list::-webkit-scrollbar-thumb:hover {
+    background: #06b6d4;
+}
+
+.project-item {
+    padding: 8px 10px;
+    background-color: #1E2952;
+    border-left: 3px solid #0284c7;
+    border-radius: 4px;
+    font-size: 12px;
+    line-height: 1.4;
+    color: whitesmoke;
+    word-break: break-word;
+    flex-shrink: 0;
+}
+
+/* ===========================
+   TEMPLATE OPTIONS MENU
+   =========================== */
+
+.template-options-menu {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 10;
+}
+
+.options-button {
+    background: none;
+    border: none;
+    color: #94a3b8;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 5px;
+    line-height: 0;
+    transition: all 0.2s ease;
+}
+
+.options-button:hover {
+    color: #3b82f6;
+    transform: scale(1.1);
+}
+
+.menu-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
+    min-width: 120px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    margin-top: 5px;
+}
+
+.menu-dropdown button {
+    background: none;
+    border: none;
+    padding: 10px 15px;
+    text-align: left;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: #475569;
+    transition: all 0.2s ease;
+}
+
+.menu-dropdown button:hover {
+    background: linear-gradient(90deg, rgba(59, 130, 246, 0.1) 0%, transparent 100%);
+    color: #3b82f6;
+    font-weight: 500;
+}
+
+.menu-dropdown .delete-button {
+    color: #ef4444;
+}
+
+.menu-dropdown .delete-button:hover {
+    background-color: rgba(239, 68, 68, 0.1);
+    color: #dc2626;
+}
+
+/* ENHANCEMENT-1: Reduced button sizes to 27px */
+.template-option-buttons {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    display: flex;
+    gap: 8px;
+}
+
+.template-option-buttons button {
+    border-radius: 50%;
+    background-color: #D6D4D2;
+    color: white;
+    padding: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    width: 36px;
+    height: 36px;
+}
+
+.template-option-buttons button:hover {
+    border-color: #002147;
+    transform: translateY(-2px);
+}
+
+.template-option-buttons .template-option-edit-icon,
+.template-option-buttons .template-option-delete-icon,
+.template-option-buttons .template-option-tree-view-icon {
+    height: 27px;
+    width: 27px;
+}
+
+.template-option-buttons .template-option-tree-view-icon {
+    transform: rotate(180deg);
+    transform: scaleX(1);
+}
+
+/* ===========================
+   TREE VIEW SECTION - ENHANCED
+   =========================== */
+
+.templates-tree-section {
+    padding: 30px;
+    animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.tree-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid rgba(59, 130, 246, 0.2);
+}
+
+.tree-header h2 {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+.tree-header-overlay {
+    color: #0f172a;
+    text-align: left;
+    margin: 15px;
+    padding: 10px 0;
+}
+
+.tree-header-overlay h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 0;
+}
+
+.back-to-list-btn {
+    padding: 12px 25px;
+    background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 50%, #1d4ed8 100%);
+    color: white;
+    border: none;
+    margin: 30px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+.back-to-list-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+}
+.back-to-list-btn:active {
+    transform: translateY(0);
+}
+
+.tree-round-button-section {
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+    padding: 30px;
+    background: white;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+    margin-bottom: 30px;
+}
+
+.tree-icon-circle {
+    flex-shrink: 0;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 50%, #1d4ed8 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+}
+
+.tree-icon {
+    font-size: 3rem;
+}
+
+.tree-content {
+    flex: 1;
+    padding: 10px 0;
+}
+
+.tree-content h3 {
+    font-size: 1.6rem;
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 0 0 15px 0;
+}
+
+.tree-content p {
+    margin: 10px 0;
+    color: #334155;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.tree-content p strong {
+    color: #0f172a;
+}
+
+.tree-placeholder {
+    text-align: center;
+    padding: 60px 30px;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(59, 130, 246, 0.02) 100%);
+    border: 2px dashed #cbd5e1;
+    border-radius: 12px;
+    color: #94a3b8;
+    font-size: 1.1rem;
+}
+
+/* ===========================
+   MERMAID DIAGRAM CONTAINER - ENHANCED & UNIFIED
+   =========================== */
+
+.mermaid-container {
+    background-color: #2C3539;
+    border: 2px solid grey;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 
+        0 10px 40px rgba(59, 130, 246, 0.12),
+        0 0 100px rgba(59, 130, 246, 0.06),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    overflow: auto;
+    height: 64vh;
+    width: 95%;
+    position: relative;
+}
+
+/* Custom Scrollbar Styling */
+.mermaid-container::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+.mermaid-container::-webkit-scrollbar-track {
+    background: rgba(59, 130, 246, 0.05);
+    border-radius: 10px;
+    margin: 4px;
+}
+
+.mermaid-container::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 50%, #1d4ed8 100%);
+    border-radius: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.mermaid-container::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.mermaid-container::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+/* Firefox Scrollbar */
+.mermaid-container {
+    scrollbar-color: #3b82f6 rgba(59, 130, 246, 0.05);
+    scrollbar-width: thin;
+}
+
+/* Mermaid SVG Wrapper */
+.mermaid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 100%;
+    min-height: 100%;
+    padding: 40px 20px;
+}
+
+.mermaid svg {
+    width: 100%;
+    height: auto;
+    min-width: 800px;
+    max-width: 100%;
+    filter: drop-shadow(0 8px 20px rgba(59, 130, 246, 0.15));
+    transition: filter 0.3s ease;
+}
+
+/* Enable Touch/Mouse Interaction */
+.mermaid-container {
+    touch-action: pan-x pan-y;
+    cursor: grab;
+}
+
+.mermaid-container:active {
+    cursor: grabbing;
+}
+
+/* ===========================
+   MERMAID NODE STYLING - UNIFIED & ENHANCED
+   =========================== */
+
+/* Text Styling Inside Nodes */
+.mermaid text {
+    font-family: 'Segoe UI', 'Trebuchet MS', Arial, sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 15px !important;
+    fill: #ffffff !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) !important;
+}
+
+.mermaid .nodeLabel {
+    font-weight: 600 !important;
+    font-size: 15px !important;
+    text-anchor: middle !important;
+}
+
+.mermaid .label text {
+    font-size: 15px !important;
+    font-weight: 600 !important;
+}
+
+/* Node Shapes - Unified Styling */
+.mermaid .node rect,
+.mermaid .node circle,
+.mermaid .node ellipse,
+.mermaid .node polygon {
+    stroke-width: 3px !important;
+    filter: drop-shadow(0 4px 12px rgba(30, 64, 175, 0.3)) !important;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
+/* Rounded Corners for Rectangles */
+.mermaid .node rect {
+    rx: 8px !important;
+    ry: 8px !important;
+}
+
+/* Node Hover Effects */
+.mermaid .node rect:hover,
+.mermaid .node circle:hover,
+.mermaid .node ellipse:hover,
+.mermaid .node polygon:hover {
+    filter: drop-shadow(0 12px 28px rgba(59, 130, 246, 0.5)) brightness(1.08) !important;
+    stroke-width: 4px !important;
+    transform: scale(1.02);
+}
+
+/* Node Group Styling */
+.mermaid .node-group {
+    filter: drop-shadow(0 4px 12px rgba(30, 64, 175, 0.2)) !important;
+}
+
+/* ===========================
+   MERMAID EDGES (CONNECTION LINES) - ENHANCED
+   =========================== */
+
+/* Edge Path Lines */
+.mermaid .edgePath path {
+    stroke: #0284c7 !important;
+    stroke-width: 3px !important;
+    fill: none !important;
+    filter: drop-shadow(0 2px 6px rgba(2, 132, 199, 0.3)) !important;
+    transition: all 0.3s ease !important;
+}
+
+.mermaid .edgePath path:hover {
+    stroke: #06b6d4 !important;
+    stroke-width: 4px !important;
+    filter: drop-shadow(0 4px 12px rgba(6, 182, 212, 0.5)) !important;
+}
+
+/* Arrow Heads */
+.mermaid .edgePath .arrowheadPath {
+    fill: #0284c7 !important;
+    stroke: #0284c7 !important;
+    stroke-width: 2px !important;
+    filter: drop-shadow(0 1px 3px rgba(2, 132, 199, 0.4)) !important;
+}
+
+/* Edge Labels (Project IDs) - ENHANCED FOR FULL VISIBILITY */
+.mermaid .edgeLabel {
+    background-color: #ffffff !important;
+    /* border: 2px solid #0284c7 !important; */
+    border-radius: 8px !important;
+    padding: 8px 14px !important;
+    box-shadow: 0 3px 10px rgba(2, 132, 199, 0.25) !important;
+    filter: drop-shadow(0 2px 8px rgba(2, 132, 199, 0.3)) !important;
+    color: black;
+}
+
+/* Edge Label Rectangle Background */
+.mermaid .edgeLabel rect {
+    fill: #ffffff !important;
+    stroke: #0284c7 !important;
+    stroke-width: 2px !important;
+    rx: 8px !important;
+    ry: 8px !important;
+    filter: drop-shadow(0 2px 8px rgba(2, 132, 199, 0.2)) !important;
+}
+
+/* Edge Label Foreign Object (contains the label) */
+.mermaid .edgeLabel foreignObject {
+    overflow: visible !important;
+}
+
+/* Edge Label Span/Div Wrapper */
+.mermaid .edgeLabel span,
+.mermaid .edgeLabel div {
+    background-color: #002147;
+    background-image: linear-gradient(315deg, #002147 0%, #3b3c36 74%);
+    /* border: 2px solid #0284c7 !important; */
+    border-radius: 5px !important;
+    /* padding: 8px 14px !important; */
+    display: inline-block !important;
+    box-shadow: 0 3px 5px rgba(2, 132, 199, 0.25) !important;
+    white-space: nowrap !important;
+}
+
+/* Edge Label Text */
+.mermaid .edgeLabel text {
+    fill: #0284c7 !important;
+    font-weight: 700 !important;
+    font-size: 13px !important;
+}
+
+/* Alternative: If using labelBkg class */
+.mermaid .labelBkg {
+    fill: #ffffff !important;
+    stroke: #0284c7 !important;
+    stroke-width: 2px !important;
+    rx: 8px !important;
+    ry: 8px !important;
+    filter: drop-shadow(0 2px 8px rgba(2, 132, 199, 0.2)) !important;
+}
+
+/* ===========================
+   MERMAID CLUSTER/SUBGRAPH STYLING
+   =========================== */
+
+.mermaid .cluster {
+    stroke: #0284c7 !important;
+    stroke-width: 2px !important;
+    fill: rgba(59, 130, 246, 0.05) !important;
+    border-radius: 8px !important;
+}
+
+.mermaid .cluster-label {
+    background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%) !important;
+    color: #ffffff !important;
+    padding: 6px 12px !important;
+    border-radius: 4px !important;
+    font-weight: 600 !important;
+}
+
+/* ===========================
+   MERMAID LOADING SPINNER
+   =========================== */
+
+.mermaid-loading-spinner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    gap: 20px;
+}
+
+.mermaid-loading-spinner .spinner {
+    width: 60px;
+    height: 60px;
+    border: 6px solid rgba(59, 130, 246, 0.2);
+    border-top-color: #3b82f6;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.mermaid-loading-spinner p {
+    color: #3b82f6;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.mermaid-container.hidden {
+    opacity: 0;
+    visibility: hidden;
+    height: 0;
+    overflow: hidden;
+}
+
+.mermaid-container.visible {
+    opacity: 1;
+    visibility: visible;
+    animation: fadeInMermaid 0.5s ease-in;
+}
+
+@keyframes fadeInMermaid {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===========================
+   ANIMATIONS
+   =========================== */
+
+/* Slide-in Animation for Paths */
+.mermaid path {
+    animation: slideIn 0.6s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        stroke-dasharray: 100;
+        stroke-dashoffset: 100;
+    }
+    to {
+        opacity: 1;
+        stroke-dasharray: 0;
+        stroke-dashoffset: 0;
+    }
+}
+
+/* ===========================
+   RESPONSIVE DESIGN - ENHANCED
+   =========================== */
+
+@media (max-width: 1200px) {
+    .back-btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+    
+    .mermaid-container {
+        height: 55vh;
+        width: 98%;
+        padding: 25px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .templates-header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .mermaid-container {
+        height: 50vh;
+        padding: 20px;
+    }
+
+    .mermaid text,
+    .mermaid .nodeLabel {
+        font-size: 13px !important;
+    }
+
+    .mermaid .edgeLabel text {
+        font-size: 12px !important;
+    }
+    
+    .tree-header-overlay h2 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .templates-page {
+        padding: 10px;
+        margin: 5px;
+    }
+    
+    .templates-header {
+        flex-direction: column;
+        gap: 15px;
+        align-items: stretch;
+    }
+    
+    .templates-header h1 {
+        font-size: 1.6rem;
+        text-align: center;
+    }
+    
+    .back-btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .mermaid-container {
+        height: 40vh;
+        width: 100%;
+        padding: 15px;
+        border-radius: 12px;
+    }
+
+    .mermaid svg {
+        min-width: 600px !important;
+    }
+
+    .mermaid text,
+    .mermaid .nodeLabel {
+        font-size: 12px !important;
+    }
+
+    .mermaid .edgeLabel text {
+        font-size: 11px !important;
+    }
+
+    .mermaid .node rect,
+    .mermaid .node circle,
+    .mermaid .node ellipse,
+    .mermaid .node polygon {
+        stroke-width: 2px !important;
+    }
+
+    .mermaid .edgePath path {
+        stroke-width: 2px !important;
+    }
+    
+    .tree-header-overlay {
+        margin: 10px;
+    }
+    
+    .tree-header-overlay h2 {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .templates-header h1 {
+        font-size: 1.4rem;
+    }
+    
+    .mermaid-container {
+        height: 35vh;
+        padding: 10px;
+    }
+    
+    .mermaid svg {
+        min-width: 500px !important;
+    }
+    
+    .mermaid text,
+    .mermaid .nodeLabel {
+        font-size: 11px !important;
+    }
+}

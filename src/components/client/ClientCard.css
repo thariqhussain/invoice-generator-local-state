@@ -1,0 +1,105 @@
+.client-card {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    padding: 20px;
+    margin: 15px;
+    width: calc(33% - 30px); 
+    min-width: 300px;
+    transition: transform 0.2s;
+}
+
+.client-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.client-name-header {
+    font-size: 1.5rem;
+    color: #3b82f6; 
+    margin-top: 0;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 10px;
+}
+
+.client-detail-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+
+.client-detail-row .label {
+    font-weight: 600;
+    color: #4b5563;
+    flex-basis: 40%;
+}
+
+.client-detail-row .value {
+    color: #6b7280;
+    flex-basis: 60%;
+    text-align: right;
+}
+
+.client-detail-row.full-row {
+    display: block;
+    margin-top: 15px;
+}
+
+.client-detail-row.full-row .value {
+    text-align: left;
+    margin-top: 5px;
+}
+
+
+.dialog-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.dialog-content {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 500px;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.dialog-content h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #1f2937;
+    font-size: 1.7rem;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 10px;
+}
+
+.dialog-content form {
+    display: flex;
+    flex-direction: column;
+}
+
+.dialog-content select, .dialog-content textarea {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 25px;
+}
